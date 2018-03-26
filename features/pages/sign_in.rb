@@ -3,8 +3,8 @@ class SignIn
 
   HEADER = {xpath: "//div[@class = 'signin-container']/h2"}
   PAGE_LOADED = {xpath: "//h3/*[text()='Sign in to your account']"}
-  LOGIN = {id: "dod-email"}
-  PASSWORD = {id: "dod-password"}
+  LOG_IN = {id: "dod-email"}
+  PASSW = {id: "dod-password"}
   SIGN_IN_BUTTON = {xpath: "//button[contains(@class, 'btn-danger')]"}
   FORGOT_PASSWORD = {xpath: "//a[contains(@class, 'text-danger')][contains(text(), 'Forgot')][contains(text(), 'password?')]"}
   ERROR_MESSAGE = {xpath: "//section[@class = 'signin']//p[contains(@class, 'alert-danger')][text() = 'Wrong email or password. Try again!']"}
@@ -21,7 +21,7 @@ class SignIn
       url = URI("https://#{subdomain}#{$base_url}#{path}")
       @browser.navigate.to url
     else
-      url = URI("https://#{ENV['ENVIRONMENT']}.#{subdomain}#{$base_url}#{path}")
+      url = URI("https://#{ENVIRONMENT}.#{subdomain}#{$base_url}#{path}")
       @browser.navigate.to url
     end
   end
@@ -31,23 +31,23 @@ class SignIn
   end
 
   def login_with_cred (login_cred)
-    login = @browser.find_element(LOGIN)
+    login = @browser.find_element(LOG_IN)
     login.send_keys login_cred
   end
 
   def password_with_cred (password_cred)
-    password = @browser.find_element(PASSWORD)
+    password = @browser.find_element(PASSW)
     password.send_keys password_cred
   end
 
   def login_with_env_var
-    login = @browser.find_element(LOGIN)
-    login.send_keys "#{ENV['LOGIN']}"
+    login = @browser.find_element(LOG_IN)
+    login.send_keys "#{LOGIN}"
   end
 
   def password_with_env_var
-    password = @browser.find_element(PASSWORD)
-    password.send_keys "#{ENV['PASSWORD']}"
+    password = @browser.find_element(PASSW)
+    password.send_keys "#{PASSWORD}"
   end
 
   def click_sign_in_button

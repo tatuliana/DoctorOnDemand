@@ -14,7 +14,7 @@ Before do
     if ENVIRONMENT == :production
       @browser.get "https://#{$base_url}"
     else
-      url = URI("https://#{ENV['ENV_LOGIN']}:#{ENV['ENV_PASSWORD']}@#{ENV['ENVIRONMENT']}.#{$base_url}")
+      url = URI("https://#{ENV_LOGIN}:#{ENV_PASSWORD}@#{ENVIRONMENT}.#{$base_url}")
       @browser.get url
     end
 

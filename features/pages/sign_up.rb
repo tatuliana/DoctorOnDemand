@@ -3,8 +3,8 @@ class SignUp
 
   HEADER = {xpath: "//h1"}
   PAGE_LOADED = {xpath: "//div[@class = 'signup-container']/h2[text() = 'Get Started']"}
-  LOGIN = {xpath: "//div[@id = 'username-wrapper']/input"}
-  PASSWORD = {xpath: "//div[@id = 'password-wrapper']/input[contains(@class, 'form-control')]"}
+  LOG_IN = {xpath: "//div[@id = 'username-wrapper']/input"}
+  PASSW = {xpath: "//div[@id = 'password-wrapper']/input[contains(@class, 'form-control')]"}
   DATE_OF_BIRTH = {xpath: "//date-input/input[contains(@class, *)]"}
   CHECKBOX = {xpath: "//div[@id = 'consent']//input"}
   BUTTON = {xpath: "//button/span[text()= 'Create Account']"}
@@ -21,7 +21,7 @@ class SignUp
       url = URI("https://#{subdomain}#{$base_url}#{path}")
       @browser.navigate.to url
     else
-      url = URI("https://#{ENV['ENVIRONMENT']}.#{subdomain}#{$base_url}#{path}")
+      url = URI("https://#{ENVIRONMENT}.#{subdomain}#{$base_url}#{path}")
       @browser.navigate.to url
     end
   end
@@ -31,12 +31,12 @@ class SignUp
   end
 
   def send_login(email_id)
-    login =@browser.find_element(LOGIN)
+    login =@browser.find_element(LOG_IN)
     login.send_keys email_id
   end
 
   def send_password(password)
-    passw = @browser.find_element(PASSWORD)
+    passw = @browser.find_element(PASSW)
     passw.send_keys password
   end
 

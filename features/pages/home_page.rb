@@ -1,7 +1,7 @@
 class HomePage
   include PageActions
 
-  PAGE_LOADED = {xpath: "//div[contains(@class,'dod-content-max-width')]/a[@class = 'dod-logo']"}
+  PAGE_LOADED = {xpath: "//div[contains(@class,'dod-content')]/a[contains(@class, 'dod-logo')]"}
   POPUP = {xpath: "//a[@class='dod-close ng-scope']"}
   HEADER = {xpath: "//h1"}
   FOOTER = {xpath: "//h2"}
